@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lb_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tv_question"
+        tools:layout_editor_absoluteY="168dp" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="1.8in"
+        android:layout_height="40dp"
+        android:layout_marginTop="1in"
+        app:layout_constraintStart_toEndOf="@+id/lb_title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rd_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question">
+
+        <RadioButton
+            android:id="@+id/rd_answer1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+
+        <RadioButton
+            android:id="@+id/rd_answer2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rd_answer1" />
+
+        <RadioButton
+            android:id="@+id/rd_answer3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rd_answer2" />
+
+    </RadioGroup>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/check_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/rd_group"
+        app:layout_constraintTop_toTopOf="@id/rd_group">
+
+        <ImageView
+            android:id="@+id/icon_answer1_correct"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_correct"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:tint="@android:color/holo_green_dark"/>
+
+        <ImageView
+            android:id="@+id/icon_answer1_wrong"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_wrong"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:tint="@android:color/holo_red_dark"/>
+
+        <ImageView
+            android:id="@+id/icon_answer2_correct"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_correct"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/icon_answer1_correct"
+            app:layout_constraintTop_toBottomOf="@id/icon_answer1_correct"
+            android:tint="@android:color/holo_green_dark"/>
+
+        <ImageView
+            android:id="@+id/icon_answer2_wrong"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_wrong"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/icon_answer1_correct"
+            app:layout_constraintTop_toBottomOf="@id/icon_answer1_correct"
+            android:tint="@android:color/holo_red_dark"/>
+
+        <ImageView
+            android:id="@+id/icon_answer3_correct"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_correct"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/icon_answer2_correct"
+            app:layout_constraintTop_toBottomOf="@id/icon_answer2_correct"
+            android:tint="@android:color/holo_green_dark"/>
+
+        <ImageView
+            android:id="@+id/icon_answer3_wrong"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_action_wrong"
+            android:visibility="invisible"
+            app:layout_constraintStart_toStartOf="@id/icon_answer2_correct"
+            app:layout_constraintTop_toBottomOf="@id/icon_answer2_correct"
+            android:tint="#E91E63"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rd_group" />
+
+</android.support.constraint.ConstraintLayout>

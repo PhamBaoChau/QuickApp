@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="tv_question" type="id" />
+    <item name="question_content" type="id" />
+    <item name="tv_answer1" type="id" />
+    <item name="answer_content1" type="id" />
+    <item name="tv_answer2" type="id" />
+    <item name="answer_content2" type="id" />
+    <item name="tv_answer3" type="id" />
+    <item name="answer_content3" type="id" />
+    <item name="tv_correct" type="id" />
+    <item name="correct_answer" type="id" />
+</resources>

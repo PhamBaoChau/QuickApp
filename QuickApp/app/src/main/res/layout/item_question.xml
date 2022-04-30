@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Câu hỏi:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/question_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_question"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_question" />
+
+    <TextView
+        android:id="@+id/tv_answer1"
+        android:text="A."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tv_question"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/answer_content1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer1" />
+    <TextView
+        android:id="@+id/tv_answer2"
+        android:text="B."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_answer1"
+        app:layout_constraintEnd_toEndOf="@+id/tv_answer1"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/answer_content2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer1"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content1" />
+    <TextView
+        android:id="@+id/tv_answer3"
+        android:text="C."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tv_answer2"
+        app:layout_constraintEnd_toEndOf="@+id/tv_answer2"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/answer_content3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer2"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content2"/>
+
+    <TextView
+        android:id="@+id/tv_correct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đáp án:"
+        app:layout_constraintTop_toBottomOf="@+id/tv_answer3"
+        app:layout_constraintEnd_toEndOf="@+id/tv_question"
+        tools:ignore="HardcodedText" />
+    <TextView
+        android:id="@+id/correct_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer3"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content3" />
+
+</android.support.constraint.ConstraintLayout>

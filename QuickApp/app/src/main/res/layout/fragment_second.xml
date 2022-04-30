@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".questions.SecondFragment">
+
+    <TextView
+        android:id="@+id/lb_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create quick test"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:text="Câu hỏi:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lb_create"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/question_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_question"
+        app:layout_constraintStart_toStartOf="@+id/answer_content2"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="Autofill,LabelFor,TextFields"
+        android:inputType="textMultiLine"/>
+
+    <TextView
+        android:id="@+id/tv_answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Câu trả lời:"
+        app:layout_constraintStart_toStartOf="@+id/tv_question"
+        app:layout_constraintTop_toBottomOf="@+id/tv_question"
+        tools:ignore="HardcodedText" />
+
+    <EditText
+        android:id="@+id/answer_content1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_answer"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer"
+        tools:ignore="Autofill,LabelFor,TextFields"
+        android:inputType="textMultiLine"/>
+
+    <EditText
+        android:id="@+id/answer_content2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content1"
+        tools:ignore="Autofill,LabelFor,TextFields"
+        android:inputType="textImeMultiLine"/>
+
+    <EditText
+        android:id="@+id/answer_content3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_answer"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content2"
+        tools:ignore="Autofill,LabelFor,TextFields"
+        android:inputType="textImeMultiLine"/>
+
+    <TextView
+        android:id="@+id/tv_correct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Đáp án:"
+        app:layout_constraintEnd_toEndOf="@+id/tv_answer"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content3"
+        tools:ignore="HardcodedText" />
+    <EditText
+        android:id="@+id/correct_answer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_correct"
+        app:layout_constraintTop_toBottomOf="@+id/answer_content3"
+        tools:ignore="Autofill,LabelFor,TextFields"
+        android:inputType="textMultiLine"/>
+    <Button
+        android:id="@+id/button_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_correct" />
+</android.support.constraint.ConstraintLayout>
