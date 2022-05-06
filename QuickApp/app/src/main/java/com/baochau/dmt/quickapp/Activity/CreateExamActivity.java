@@ -76,7 +76,7 @@ public class CreateExamActivity extends AppCompatActivity implements AdapterView
 //        handleDoneButton(edtA);
 //        handleDoneButton(edtB);
 //        handleDoneButton(edtC);
-        dataSpinner.add("Vui lòng chọn đáp án");
+//        dataSpinner.add("Vui lòng chọn đáp án");
         spinnerAdapter = new ArrayAdapter(CreateExamActivity.this,
                 android.support.design.R.layout.support_simple_spinner_dropdown_item, dataSpinner);
         spnCorrect.setAdapter(spinnerAdapter);
