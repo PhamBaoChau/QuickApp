@@ -33,23 +33,23 @@ public class QuestionHelper extends SQLiteOpenHelper {
         return this.getWritableDatabase();
     }
 
-    public void addQuestions(ArrayList<ItemQuestion> questions) {
-        for (int i = 0; i < questions.size(); i++) {
-            final ItemQuestion item = questions.get(i);
-            addQuestion(item.question, item.answer1,item.answer2,item.answer3,item.correct);
-        }
-    }
+//    public void addQuestions(ArrayList<ItemQuestion> questions) {
+//        for (int i = 0; i < questions.size(); i++) {
+//            final ItemQuestion item = questions.get(i);
+//            addQuestion(item.question, item.answer1,item.answer2,item.answer3,item.correct);
+//        }
+//    }
 
     public void addQuestion(String nameQuestions, Answer answer1, Answer answer2, Answer answer3, Answer correctAnswer) {
         ContentValues values = new ContentValues();
         values.put(NAME_QUESTION, nameQuestions);
-        values.put(ANSWER_ID_1, answer1.id);
+        values.put(ANSWER_ID_1,(String) answer1.id);
         values.put(ANSWER1, answer1.answer);
-        values.put(ANSWER_ID_2, answer2.id);
+        values.put(ANSWER_ID_2,(String)  answer2.id);
         values.put(ANSWER2, answer2.answer);
-        values.put(ANSWER_ID_3, answer3.id);
+        values.put(ANSWER_ID_3,(String)  answer3.id);
         values.put(ANSWER3, answer3.answer);
-        values.put(CORRECT_ANSWER_ID, correctAnswer.id);
+        values.put(CORRECT_ANSWER_ID,(String)  correctAnswer.id);
         values.put(CORRECT_ANSWER, correctAnswer.answer);
 
         getCurrentDB().insert(TableName, null, values);
@@ -72,10 +72,10 @@ public class QuestionHelper extends SQLiteOpenHelper {
             ItemQuestion question = new ItemQuestion();
             question.id = cursor.getInt(0);
             question.question = cursor.getString(1);
-            question.answer1 = new Answer(cursor.getInt(2), cursor.getString(3));
-            question.answer2 = new Answer(cursor.getInt(4), cursor.getString(5));
-            question.answer3 = new Answer(cursor.getInt(6), cursor.getString(7));
-            question.correct = new Answer(cursor.getInt(8), cursor.getString(9));
+            question.answer1 = new Answer(cursor.getString(2), cursor.getString(3));
+            question.answer2 = new Answer(cursor.getString(4), cursor.getString(5));
+            question.answer3 = new Answer(cursor.getString(6), cursor.getString(7));
+            question.correct = new Answer(cursor.getString(8), cursor.getString(9));
             questions.add(question);
         }
         return questions;

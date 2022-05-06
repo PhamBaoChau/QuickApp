@@ -116,10 +116,10 @@ public class SecondFragment extends Fragment {
                         && !getText(etAnswer3).isEmpty()
                         && !getText(etCorrect).isEmpty()
                 ) {
-                    Answer answer1 = new Answer(0,getText(etAnswer1));
-                    Answer answer2 = new Answer(1,getText(etAnswer2));
-                    Answer answer3 = new Answer(2,getText(etAnswer3));
-                    Answer correct = new Answer(3,getText(etCorrect));
+                    Answer answer1 = new Answer("A",getText(etAnswer1));
+                    Answer answer2 = new Answer("B",getText(etAnswer2));
+                    Answer answer3 = new Answer("C",getText(etAnswer3));
+                    Answer correct = new Answer("D",getText(etCorrect));
                     db.addQuestion(getText(etQuestion), answer1,answer2,answer3,correct);
 //                    bundle.putString("Question", String.valueOf(etQuestion.getText()));
 //                    bundle.putString("Answer1", String.valueOf(etAnswer1.getText()));

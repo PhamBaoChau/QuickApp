@@ -121,12 +121,5 @@
             android:tint="#E91E63"/>
     </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btn_confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/confirm"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rd_group" />
 
 </android.support.constraint.ConstraintLayout>

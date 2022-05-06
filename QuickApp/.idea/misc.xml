@@ -40,6 +40,21 @@
         <entry key="..\:/QuickApp/app/src/main/res/menu/menu_main.xml" value="0.2" />
         <entry key="..\:/QuickApp/app/src/main/res/menu/screen_exam.xml" value="0.25" />
         <entry key="..\:/QuickApp/app/src/main/res/menu/screen_slide_exam.xml" value="0.25" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/activity_create_exam.xml" value="0.264" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/activity_main.xml" value="0.16799999999999998" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/activity_main2.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/activity_screen_slide_exam.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/activity_start_exam.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/content_main.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/fragment_exam.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/fragment_first.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/fragment_second.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/fragment_slide_page_exam.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/item_exam.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/item_history.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/item_question.xml" value="0.13405797101449277" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/layout/spinner_correct.xml" value="0.176" />
+        <entry key="..\:/Users/admin/Documents/QuickApp/QuickApp/app/src/main/res/menu/menu_main.xml" value="0.2328125" />
       </map>
     </option>
   </component>

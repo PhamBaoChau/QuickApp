@@ -9,13 +9,16 @@ import android.view.View;
 import com.baochau.dmt.quickapp.questions.FirstFragment;
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{
+
+    FragmentManager manager;
     public ScreenSlidePagerAdapter(FragmentManager fm) {
         super(fm);
+        manager = fm;
     }
 
     @Override
     public Fragment getItem(int i) {
-        return SlidePageFragment.create(i);
+        return manager.getFragments().get(i);
     }
 
     @Override

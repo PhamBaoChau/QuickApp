@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickApp">
         <activity
+            android:name=".Activity.StartExamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CreateExamActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity

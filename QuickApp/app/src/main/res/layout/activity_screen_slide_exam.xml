@@ -6,37 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".slide.ScreenSlideExamActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appBarExamLayout"
-        android:layout_width="match_parent"
-        android:layout_height="2.5in"
-        android:background="#FFFFFF"
-        tools:ignore="MissingConstraints">
-
-        <android.support.v4.view.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
 
 
-        </android.support.v4.view.ViewPager>
-    </android.support.design.widget.AppBarLayout>
 
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"  />
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/next"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarExamLayout" />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent" />
     <Button
         android:id="@+id/btn_finish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/finish"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBarExamLayout" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

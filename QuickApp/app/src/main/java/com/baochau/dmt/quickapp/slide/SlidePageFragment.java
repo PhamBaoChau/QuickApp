@@ -30,10 +30,8 @@ public class SlidePageFragment extends Fragment {
     TextView question;
     RadioButton answer1, answer2, answer3;
     RadioGroup radioGroup;
-    Button btnConfirm;
     ImageView imgAns1Correct, imgAns2Correct, imgAns3Correct;
     ImageView imgAns1Wrong, imgAns2Wrong, imgAns3Wrong;
-
     Answer myAnswer;
 
     @Override
@@ -45,7 +43,6 @@ public class SlidePageFragment extends Fragment {
         answer1 = rootView.findViewById(R.id.rd_answer1);
         answer2 = rootView.findViewById(R.id.rd_answer2);
         answer3 = rootView.findViewById(R.id.rd_answer3);
-        btnConfirm = rootView.findViewById(R.id.btn_confirm);
         imgAns1Correct = rootView.findViewById(R.id.icon_answer1_correct);
         imgAns2Correct = rootView.findViewById(R.id.icon_answer2_correct);
         imgAns3Correct = rootView.findViewById(R.id.icon_answer3_correct);
@@ -67,13 +64,13 @@ public class SlidePageFragment extends Fragment {
         answer1.setText(arrayList.get(numPage).answer1.answer);
         answer2.setText(arrayList.get(numPage).answer2.answer);
         answer3.setText(arrayList.get(numPage).answer3.answer);
-        btnConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Check(numPage);
-                btnConfirm.setVisibility(view.INVISIBLE);
-            }
-        });
+//        btnConfirm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Check(numPage);
+//                btnConfirm.setVisibility(view.GONE);
+//            }
+//        });
     }
 
     public static SlidePageFragment create(int pageNumber) {
@@ -87,72 +84,47 @@ public class SlidePageFragment extends Fragment {
     private void showImageView(ImageView image, Boolean visible) {
         if (visible) {
             image.setVisibility(View.VISIBLE);
-        } else {
-            image.setVisibility(View.GONE);
         }
     }
 
     public void Check(int i) {
         if (radioGroup.getCheckedRadioButtonId() != -1) {
-            getAnswer();
             if (arrayList.get(i).correct.answer.equals(answer1.getText())) {
 
-//                if (answer1.isChecked()) {
-//                    imgAns1Correct.setVisibility(View.VISIBLE);
-//                }
                 showImageView(imgAns1Correct, answer1.isChecked());
 
-//                else if (answer2.isChecked()) {
-//                    imgAns2Wrong.setVisibility(View.VISIBLE);
-//                    answer1.setChecked(true);
-//                }
                 showImageView(imgAns2Wrong, answer2.isChecked());
 
-//                else if (answer3.isChecked()) {
-//                    imgAns3Wrong.setVisibility(View.VISIBLE);
-//                    answer1.setChecked(true);
-//                }
                 showImageView(imgAns3Wrong, answer3.isChecked());
+//                answer1.setChecked(true);
 
+            } else if (arrayList.get(i).correct.answer.equals(answer2.getText())) {
+                showImageView(imgAns2Correct, answer2.isChecked());
+
+                showImageView(imgAns1Wrong, answer1.isChecked());
+
+                showImageView(imgAns3Wrong, answer3.isChecked());
+//                answer2.setChecked(true);
+            } else if (arrayList.get(i).correct.answer.equals(answer3.getText())) {
+
+                showImageView(imgAns3Correct, answer3.isChecked());
+
+                showImageView(imgAns1Wrong, answer1.isChecked());
+
+                showImageView(imgAns2Wrong, answer2.isChecked());
+//                answer3.setChecked(true);
             }
-//            else if ((arrayList.get(i).correct.answer).compareTo((String) answer2.getText()) == 0) {
-            else if (arrayList.get(i).correct.answer.equals(answer2.getText())) {
-                if (answer2.isChecked()) {
-                    imgAns2Correct.setVisibility(View.VISIBLE);
-                } else {
-                    if (answer1.isChecked()) {
-                        imgAns1Wrong.setVisibility(View.VISIBLE);
-                        answer2.setChecked(true);
-                    } else if (answer3.isChecked()) {
-                        imgAns3Wrong.setVisibility(View.VISIBLE);
-                        answer2.setChecked(true);
-                    }
-                }
-            } else if ((arrayList.get(i).correct.answer).compareTo((String) answer3.getText()) == 0) {
-                if (answer3.isChecked()) {
-                    imgAns3Correct.setVisibility(View.VISIBLE);
-                } else {
-                    if (answer1.isChecked()) {
-                        imgAns1Wrong.setVisibility(View.VISIBLE);
-                        answer3.setChecked(true);
-
-                    } else if (answer2.isChecked()) {
-                        imgAns2Wrong.setVisibility(View.VISIBLE);
-                        answer3.setChecked(true);
-
-                    }
-                }
-            }
-        } else {
+        }
+        else {
             ExitGameDialogFragment exitGameDialogFragment = new ExitGameDialogFragment();
             exitGameDialogFragment.show(getFragmentManager(), "game");
         }
     }
 
-    Answer getAnswer() {
+    public Answer getAnswer() {
         if (radioGroup.getCheckedRadioButtonId() != -1) {
             if (radioGroup.getCheckedRadioButtonId() == answer1.getId()) {
-                myAnswer = arrayList.get(numPage).answer1;
+                myAnswer= arrayList.get(numPage).answer1;
             }
             if (radioGroup.getCheckedRadioButtonId() == answer2.getId()) {
                 myAnswer = arrayList.get(numPage).answer2;
