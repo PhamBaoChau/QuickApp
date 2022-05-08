@@ -12,7 +12,9 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.baochau.dmt.quickapp.Activity.StartExamActivity;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
 import com.baochau.dmt.quickapp.questions.Answer;
@@ -22,10 +24,7 @@ import java.util.ArrayList;
 
 
 public class SlidePageFragment extends Fragment {
-    public static final String ARG_PAGE = "page";
-    int numPage;
-    public static ArrayList<ItemQuestion> arrayList = new ArrayList<>();
-    QuestionHelper db;
+
     TextView title;
     TextView question;
     RadioButton answer1, answer2, answer3;
@@ -33,6 +32,7 @@ public class SlidePageFragment extends Fragment {
     ImageView imgAns1Correct, imgAns2Correct, imgAns3Correct;
     ImageView imgAns1Wrong, imgAns2Wrong, imgAns3Wrong;
     Answer myAnswer;
+    ItemQuestion itemQuestion;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,36 +50,32 @@ public class SlidePageFragment extends Fragment {
         imgAns2Wrong = rootView.findViewById(R.id.icon_answer2_wrong);
         imgAns3Wrong = rootView.findViewById(R.id.icon_answer3_wrong);
 
+        Bundle bundle = getArguments();
+        ItemQuestion itemQuestion = (ItemQuestion) bundle.getSerializable(StartExamActivity.ITEM_QUESTION);
+        setQuestion(itemQuestion);
         return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        numPage = getArguments().getInt(ARG_PAGE);
-        db = new QuestionHelper(getContext(), null, null, 0);
-        arrayList = db.getQuestions();
-        title.setText("Câu " + (numPage + 1) + ": ");
-        question.setText(arrayList.get(numPage).question);
-        answer1.setText(arrayList.get(numPage).answer1.answer);
-        answer2.setText(arrayList.get(numPage).answer2.answer);
-        answer3.setText(arrayList.get(numPage).answer3.answer);
-//        btnConfirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Check(numPage);
-//                btnConfirm.setVisibility(view.GONE);
-//            }
-//        });
     }
 
-    public static SlidePageFragment create(int pageNumber) {
-        SlidePageFragment slidePageFragment = new SlidePageFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(ARG_PAGE, pageNumber);
-        slidePageFragment.setArguments(bundle);
-        return slidePageFragment;
+    public void setQuestion(ItemQuestion itemQuestion) {
+        question.setText(itemQuestion.question);
+        answer1.setText(itemQuestion.answer1.answer);
+        answer2.setText(itemQuestion.answer2.answer);
+        answer3.setText(itemQuestion.answer3.answer);
+        this.itemQuestion = itemQuestion;
     }
+
+//    public static SlidePageFragment create(int pageNumber) {
+//        SlidePageFragment slidePageFragment = new SlidePageFragment();
+//        Bundle bundle = new Bundle();
+//        bundle.putInt(ARG_PAGE, pageNumber);
+//        slidePageFragment.setArguments(bundle);
+//        return slidePageFragment;
+//    }
 
     private void showImageView(ImageView image, Boolean visible) {
         if (visible) {
@@ -87,54 +83,59 @@ public class SlidePageFragment extends Fragment {
         }
     }
 
-    public void Check(int i) {
+    private void showCorrectAnswer(Answer correctAnswer) {
+        if (correctAnswer.answer.equals(answer1.getText())) {
+            showImageView(imgAns1Correct, answer1.isChecked());
+        } else {
+            imgAns1Wrong.setVisibility(View.VISIBLE);
+
+        }
+    }
+
+    private void checkAnswerNSetupLayout() {
         if (radioGroup.getCheckedRadioButtonId() != -1) {
-            if (arrayList.get(i).correct.answer.equals(answer1.getText())) {
+            if (itemQuestion.correct.answer.equals(answer1.getText())) {
 
                 showImageView(imgAns1Correct, answer1.isChecked());
-
                 showImageView(imgAns2Wrong, answer2.isChecked());
-
                 showImageView(imgAns3Wrong, answer3.isChecked());
 //                answer1.setChecked(true);
+                imgAns1Correct.setVisibility(View.VISIBLE);
 
-            } else if (arrayList.get(i).correct.answer.equals(answer2.getText())) {
+            }
+            if (itemQuestion.correct.answer.equals(answer2.getText())) {
                 showImageView(imgAns2Correct, answer2.isChecked());
-
                 showImageView(imgAns1Wrong, answer1.isChecked());
-
                 showImageView(imgAns3Wrong, answer3.isChecked());
 //                answer2.setChecked(true);
-            } else if (arrayList.get(i).correct.answer.equals(answer3.getText())) {
+                imgAns2Correct.setVisibility(View.VISIBLE);
+            }
+
+            if (itemQuestion.correct.answer.equals(answer3.getText())) {
 
                 showImageView(imgAns3Correct, answer3.isChecked());
-
                 showImageView(imgAns1Wrong, answer1.isChecked());
-
                 showImageView(imgAns2Wrong, answer2.isChecked());
 //                answer3.setChecked(true);
+                imgAns3Correct.setVisibility(View.VISIBLE);
             }
-        }
-        else {
-            ExitGameDialogFragment exitGameDialogFragment = new ExitGameDialogFragment();
-            exitGameDialogFragment.show(getFragmentManager(), "game");
+        } else {
+            Toast.makeText(getContext(), "Vui lòng chọn đáp án", Toast.LENGTH_SHORT).show();
+//            ExitGameDialogFragment exitGameDialogFragment = new ExitGameDialogFragment();
+//            exitGameDialogFragment.show(getFragmentManager(), "game");
         }
     }
 
     public Answer getAnswer() {
-        if (radioGroup.getCheckedRadioButtonId() != -1) {
-            if (radioGroup.getCheckedRadioButtonId() == answer1.getId()) {
-                myAnswer= arrayList.get(numPage).answer1;
-            }
-            if (radioGroup.getCheckedRadioButtonId() == answer2.getId()) {
-                myAnswer = arrayList.get(numPage).answer2;
-            }
-            if (radioGroup.getCheckedRadioButtonId() == answer3.getId()) {
-                myAnswer = arrayList.get(numPage).answer3;
-            }
+        checkAnswerNSetupLayout();
+        if (answer1.isChecked()) {
+            return myAnswer = itemQuestion.answer1;
         }
-        if (myAnswer != null) {
-            return myAnswer;
+        if (answer2.isChecked()) {
+            return myAnswer = itemQuestion.answer2;
+        }
+        if (answer3.isChecked()) {
+            return myAnswer = itemQuestion.answer3;
         }
         return null;
     }

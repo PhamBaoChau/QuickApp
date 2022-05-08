@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.baochau.dmt.quickapp.Activity.CreateExamActivity;
+import com.baochau.dmt.quickapp.Activity.StartExamActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         if (view.getId() == btnJoin.getId()) {
-
+            Intent intent =new Intent(this, StartExamActivity.class);
+            startActivity(intent);
         }
         if (view.getId() == btnHistory.getId()) {
 

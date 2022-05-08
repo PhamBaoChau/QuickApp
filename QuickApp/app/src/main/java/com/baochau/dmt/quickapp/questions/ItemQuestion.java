@@ -3,7 +3,9 @@ package com.baochau.dmt.quickapp.questions;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class ItemQuestion{
+import java.io.Serializable;
+
+public class ItemQuestion implements Serializable {
     public int id;
     public String question;
     public Answer answer1;
