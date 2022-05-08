@@ -1,7 +1,4 @@
 Tạo thêm chức năng xem danh sách câu hỏi.
-Đổi giá trị hiển thị của spinner.
-Tạo hint cho spinner (*).
-Custom Spinner.
 
 
 --

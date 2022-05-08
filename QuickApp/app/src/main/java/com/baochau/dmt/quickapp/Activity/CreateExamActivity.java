@@ -1,25 +1,16 @@
 package com.baochau.dmt.quickapp.Activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +20,6 @@ import com.baochau.dmt.quickapp.database.QuestionHelper;
 import com.baochau.dmt.quickapp.questions.Answer;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class CreateExamActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
 
@@ -76,11 +66,13 @@ public class CreateExamActivity extends AppCompatActivity implements AdapterView
 //        handleDoneButton(edtA);
 //        handleDoneButton(edtB);
 //        handleDoneButton(edtC);
-//        dataSpinner.add("Vui lòng chọn đáp án");
-        spinnerAdapter = new ArrayAdapter(CreateExamActivity.this,
-                android.support.design.R.layout.support_simple_spinner_dropdown_item, dataSpinner);
-        spnCorrect.setAdapter(spinnerAdapter);
+        dataSpinner.add("Vui lòng chọn đáp án");
         spnCorrect.setOnItemSelectedListener(this);
+        spinnerAdapter = new CustomSpnAdapter(this,R.layout.spinner_selected,dataSpinner);
+//        ArrayAdapter adapter = new ArrayAdapter(CreateExamActivity.this, android.support.v7.appcompat.R.layout.support_simple_spinner_dropdown_item);
+
+        spnCorrect.setAdapter(spinnerAdapter);
+
 
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,10 +90,12 @@ public class CreateExamActivity extends AppCompatActivity implements AdapterView
         });
     }
 
-    void convertToDataSpinner() {
+    void convertSpnAdapter()
+    {
         dataSpinner.clear();
-        for (Answer item : answers) {
-            dataSpinner.add(item.answer);
+        dataSpinner.add("Vui lòng chọn đáp án");
+        for (Answer item:answers) {
+            dataSpinner.add(item.id);
         }
         spinnerAdapter.notifyDataSetChanged();
     }
@@ -141,27 +135,28 @@ public class CreateExamActivity extends AppCompatActivity implements AdapterView
 
         if (editText == edtA) {
             answer.id = "A";
-            updateData(answer);
+//            updateData(answer);
         } else if (editText == edtB) {
             answer.id = "B";
-            updateData(answer);
+//            updateData(answer);
         } else if (editText == edtC) {
             answer.id = "C";
-            updateData(answer);
+//            updateData(answer);
         }
+        answers.add(answer);
     }
 
-    private void updateData(Answer answer) {
-        if (answers.size() == 3) {
-            for (int i = 0; i < answers.size(); i++) {
-                if (answers.get(i).id.equals(answer.id)) {
-                    answers.set(i, answer);
-                }
-            }
-        } else {
-            answers.add(answer);
-        }
-    }
+//    private void updateData(Answer answer) {
+//        if (answers.size() == 3) {
+//            for (int i = 0; i < answers.size(); i++) {
+//                if (answers.get(i).id.equals(answer.id)) {
+//                    answers.set(i, answer);
+//                }
+//            }
+//        } else {
+//            answers.add(answer);
+//        }
+//    }
 
     private String getText(EditText edt) {
         return edt.getText().toString().trim();
@@ -169,46 +164,29 @@ public class CreateExamActivity extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//        ansCorrect = new Answer("D", answers.get(i));
-        ansCorrect = answers.get(i);
+        String id = dataSpinner.get(i);
+        ansCorrect = null;
+        for (Answer answer: answers) {
+            if (answer.id.equals(id)) {
+                ansCorrect = answer;
+            }
+        }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
     @Override
     public void onClick(View view) {
         this.clearFocus();
-
+        dataSpinner.clear();
+        answers.clear();
         if (checkInputField()) {
             createData(edtA);
             createData(edtB);
             createData(edtC);
-            convertToDataSpinner();
+            convertSpnAdapter();
         }
     }
-
-    //    void ChangedText(EditText edtText) {
-//        edtText.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                sText = getText(edtText);
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//            }
-//        });
-//
-//        if (edtText.isCursorVisible() == false) {
-//            System.out.println(sText);
-////            answers.add(sText);
-//        }
-//    }
 }
