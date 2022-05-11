@@ -1,6 +1,8 @@
 package com.baochau.dmt.quickapp.questions;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
     public String id;
     public String answer;
 

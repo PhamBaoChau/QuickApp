@@ -1,5 +1,6 @@
 package com.baochau.dmt.quickapp.Activity;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.baochau.dmt.quickapp.FragmentDone;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
 import com.baochau.dmt.quickapp.questions.Answer;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 public class StartExamActivity extends AppCompatActivity {
 
     public final static String ITEM_QUESTION = "ITEM_QUESTION";
+    public final static String MY_ANSWER = "MY_ANSWER";
 
     int Next = 1;
     int Confirm = 2;
@@ -35,6 +38,8 @@ public class StartExamActivity extends AppCompatActivity {
     ArrayList<Answer> listAnswer = new ArrayList<>();
     SlidePageFragment slidePageFragment;
 
+    int currentQuestion = 0;
+
     void init() {
         fragmentLayout = findViewById(R.id.fragment);
         btnNext = findViewById(R.id.btn_next);
@@ -46,6 +51,7 @@ public class StartExamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_exam);
+
         init();
         getQuestions();
         replaceFragment();
@@ -76,9 +82,15 @@ public class StartExamActivity extends AppCompatActivity {
     private void confirmFunction() {
         Answer answer = slidePageFragment.getAnswer();
         if (answer != null) {
-            setStateButton(Next);
             listAnswer.add(answer);
+            currentQuestion++;
+            if (currentQuestion < arrayList.size()) {
+                setStateButton(Next);
+            } else {
+                setStateButton(Finish);
+            }
         }
+
     }
 
     private void nextFunction() {
@@ -87,17 +99,27 @@ public class StartExamActivity extends AppCompatActivity {
     }
 
     private void finishFunction() {
-
+        fragmentManager = getSupportFragmentManager().beginTransaction();
+        FragmentDone fragmentDone = new FragmentDone();
+        fragmentManager.replace(fragmentLayout.getId(), fragmentDone);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(MY_ANSWER, listAnswer);
+        slidePageFragment.setArguments(bundle);
+        fragmentManager.addToBackStack(null);
+        fragmentManager.commit();
     }
 
     private void replaceFragment() {
         slidePageFragment = new SlidePageFragment();
-        fragmentManager = getSupportFragmentManager().beginTransaction();
-        fragmentManager.replace(fragmentLayout.getId(), slidePageFragment);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(ITEM_QUESTION, arrayList.get(0));
-        slidePageFragment.setArguments(bundle);
-        fragmentManager.commit();
+        if (currentQuestion < arrayList.size()) {
+            fragmentManager = getSupportFragmentManager().beginTransaction();
+            fragmentManager.replace(fragmentLayout.getId(), slidePageFragment);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(ITEM_QUESTION, arrayList.get(currentQuestion));
+            slidePageFragment.setArguments(bundle);
+            fragmentManager.addToBackStack(null);
+            fragmentManager.commit();
+        }
     }
 
     private void setStateButton(int state) {
