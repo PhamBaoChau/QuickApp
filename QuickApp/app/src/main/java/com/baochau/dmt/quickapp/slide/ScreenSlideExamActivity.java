@@ -1,21 +1,14 @@
 package com.baochau.dmt.quickapp.slide;
 
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.questions.Answer;
-import com.baochau.dmt.quickapp.questions.FirstFragment;
-import com.baochau.dmt.quickapp.questions.ItemQuestion;
+import com.baochau.dmt.quickapp.OOP.ItemQuestion;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ScreenSlideExamActivity extends FragmentActivity {
     ArrayList<ItemQuestion> arrayList = new ArrayList<>();

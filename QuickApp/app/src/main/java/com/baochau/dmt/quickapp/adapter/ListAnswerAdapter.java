@@ -1,4 +1,4 @@
-package com.baochau.dmt.quickapp;
+package com.baochau.dmt.quickapp.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.questions.Answer;
+import com.baochau.dmt.quickapp.OOP.Answer;
+import com.baochau.dmt.quickapp.OOP.ItemQuestion;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,7 @@ public class ListAnswerAdapter extends BaseAdapter {
     QuestionHelper db;
     Context context;
     ArrayList<Answer> list;
+    ArrayList<ItemQuestion> questions;
 
     public ListAnswerAdapter(Context context, ArrayList<Answer> list) {
         this.context = context;
@@ -42,13 +45,12 @@ public class ListAnswerAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = LayoutInflater.from(context);
         view = inflater.inflate(R.layout.item_answer, null);
-
         TextView tvTitle = view.findViewById(R.id.tvTitle);
         TextView tvStatus = view.findViewById(R.id.tvStatus);
-
+        questions=db.getQuestions();
 
         tvTitle.setText("Câu " + (i + 1));
-        if (list.get(i).id.equals(db.getQuestions().get(i).correct.id)) {
+        if (list.get(i).id.equals(questions.get(i).correct.id)) {
             tvStatus.setText("Đúng");
         } else tvStatus.setText("Sai");
 

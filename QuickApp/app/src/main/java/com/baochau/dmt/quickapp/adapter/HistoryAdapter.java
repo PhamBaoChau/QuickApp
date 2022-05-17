@@ -1,20 +1,23 @@
-package com.baochau.dmt.quickapp.history;
+package com.baochau.dmt.quickapp.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.baochau.dmt.quickapp.OOP.ItemHistory;
 import com.baochau.dmt.quickapp.R;
 
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class HistoryAdapter extends BaseAdapter {
+    Context context;
     ArrayList<ItemHistory> arr;
 
-    public HistoryAdapter(ArrayList<ItemHistory> arr) {
+    public HistoryAdapter(Context context, ArrayList<ItemHistory> arr) {
+        this.context = context;
         this.arr = arr;
     }
 
@@ -35,16 +38,18 @@ public class HistoryAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater layoutInflater=LayoutInflater.from(view.getContext());
+        LayoutInflater layoutInflater=LayoutInflater.from(context);
         view =layoutInflater.inflate(R.layout.item_history,null);
 
-        TextView idGame=view.findViewById(R.id.tv_id);
-        TextView result=view.findViewById(R.id.tv_result);
-        TextView timer=view.findViewById(R.id.tv_time);
+        TextView id=view.findViewById(R.id.tvId);
+        TextView name=view.findViewById(R.id.tvName);
+        TextView result=view.findViewById(R.id.tvResult);
+        TextView timer=view.findViewById(R.id.tvTime);
 
-        idGame.setText(arr.get(i).id);
+        id.setText(String.valueOf(arr.get(i).id));
+        name.setText(arr.get(i).name);
         result.setText(arr.get(i).result);
-        result.setText(arr.get(i).time);
+        timer.setText(arr.get(i).time);
         return view;
     }
 }

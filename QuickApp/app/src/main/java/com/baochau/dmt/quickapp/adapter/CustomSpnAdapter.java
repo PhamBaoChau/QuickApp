@@ -1,4 +1,4 @@
-package com.baochau.dmt.quickapp.Activity;
+package com.baochau.dmt.quickapp.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.baochau.dmt.quickapp.R;
-import com.baochau.dmt.quickapp.questions.Answer;
 
 import java.util.List;
 

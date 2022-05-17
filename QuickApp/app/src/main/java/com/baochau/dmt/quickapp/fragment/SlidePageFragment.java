@@ -1,4 +1,4 @@
-package com.baochau.dmt.quickapp.slide;
+package com.baochau.dmt.quickapp.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -16,11 +15,8 @@ import android.widget.Toast;
 
 import com.baochau.dmt.quickapp.Activity.StartExamActivity;
 import com.baochau.dmt.quickapp.R;
-import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.questions.Answer;
-import com.baochau.dmt.quickapp.questions.ItemQuestion;
-
-import java.util.ArrayList;
+import com.baochau.dmt.quickapp.OOP.Answer;
+import com.baochau.dmt.quickapp.OOP.ItemQuestion;
 
 
 public class SlidePageFragment extends Fragment {
@@ -83,14 +79,14 @@ public class SlidePageFragment extends Fragment {
         }
     }
 
-    private void showCorrectAnswer(Answer correctAnswer) {
-        if (correctAnswer.answer.equals(answer1.getText())) {
-            showImageView(imgAns1Correct, answer1.isChecked());
-        } else {
-            imgAns1Wrong.setVisibility(View.VISIBLE);
-
-        }
-    }
+//    private void showCorrectAnswer(Answer correctAnswer) {
+//        if (correctAnswer.answer.equals(answer1.getText())) {
+//            showImageView(imgAns1Correct, answer1.isChecked());
+//        } else {
+//            imgAns1Wrong.setVisibility(View.VISIBLE);
+//
+//        }
+//    }
 
     private void checkAnswerNSetupLayout() {
         if (radioGroup.getCheckedRadioButtonId() != -1) {

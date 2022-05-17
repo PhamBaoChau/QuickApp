@@ -7,10 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.baochau.dmt.quickapp.OOP.ItemHistory;
 import com.baochau.dmt.quickapp.R;
+import com.baochau.dmt.quickapp.adapter.HistoryAdapter;
 import com.baochau.dmt.quickapp.database.HistoryHelper;
 
 import java.util.ArrayList;
@@ -32,9 +33,9 @@ public class HistoryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        db=new HistoryHelper(getContext(),null,null,0);
-//        arrayList=db.getListHistory();
-//
+        db=new HistoryHelper(getContext(),null,null,0);
+        arrayList=db.getListHistory();
+
 //        adapter=new HistoryAdapter(arrayList);
 //        lvHistory=view.findViewById(R.id.lv_history);
 //        lvHistory.setAdapter(adapter);

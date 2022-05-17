@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    <TextView
+        android:id="@+id/lbQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Câu "
+        android:textColor="@color/black"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=": "
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/lbQuestion"
+        app:layout_constraintTop_toTopOf="@+id/lbQuestion" />
+
+    <TextView
+        android:id="@+id/lbA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A. "
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/lbQuestion" />
+
+    <TextView
+        android:id="@+id/tvA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/lbA"
+        app:layout_constraintTop_toTopOf="@id/lbA" />
+
+    <TextView
+        android:id="@+id/lbB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="B. "
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/lbA" />
+
+    <TextView
+        android:id="@+id/tvB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/lbB"
+        app:layout_constraintTop_toTopOf="@id/lbB" />
+
+    <TextView
+        android:id="@+id/lbC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="C. "
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/lbB" />
+
+    <TextView
+        android:id="@+id/tvC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/lbC"
+        app:layout_constraintTop_toTopOf="@id/lbC" />
+
+    <TextView
+        android:id="@+id/lbCorrect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đáp án: "
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/lbC" />
+
+    <TextView
+        android:id="@+id/tvCorrect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@id/lbCorrect"
+        app:layout_constraintTop_toTopOf="@id/lbCorrect" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>

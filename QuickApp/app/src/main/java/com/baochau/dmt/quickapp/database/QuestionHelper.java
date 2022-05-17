@@ -7,17 +7,18 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-import com.baochau.dmt.quickapp.questions.Answer;
-import com.baochau.dmt.quickapp.questions.ItemQuestion;
+import com.baochau.dmt.quickapp.OOP.Answer;
+import com.baochau.dmt.quickapp.OOP.ItemQuestion;
 
 import java.util.ArrayList;
 
 public class QuestionHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "QuickQuestions";
+    public static final String DB_NAME = "QuickApp";
     public static int DB_version = 1;
     private static final String TableName = "Questions";
     private static final String ID_COL = "ID";
+    private static final String ID_TOPIC = "ID_TOPIC";
     private static final String NAME_QUESTION = "NAME_QUESTION";
 
     private static final String ANSWER_ID_1 = "ANSWER_ID_1";
@@ -29,7 +30,7 @@ public class QuestionHelper extends SQLiteOpenHelper {
     private static final String CORRECT_ANSWER_ID = "CORRECT_ANSWER_ID";
     private static final String CORRECT_ANSWER = "CORRECT_ANSWER";
 
-    private SQLiteDatabase getCurrentDB() {
+    public SQLiteDatabase getCurrentDB() {
         return this.getWritableDatabase();
     }
 
@@ -40,16 +41,17 @@ public class QuestionHelper extends SQLiteOpenHelper {
 //        }
 //    }
 
-    public void addQuestion(String nameQuestions, Answer answer1, Answer answer2, Answer answer3, Answer correctAnswer) {
+    public void addQuestion(String nameQuestions,int idTopic, Answer answer1, Answer answer2, Answer answer3, Answer correctAnswer) {
         ContentValues values = new ContentValues();
         values.put(NAME_QUESTION, nameQuestions);
-        values.put(ANSWER_ID_1,(String) answer1.id);
+        values.put(ID_TOPIC,idTopic);
+        values.put(ANSWER_ID_1, (String) answer1.id);
         values.put(ANSWER1, answer1.answer);
-        values.put(ANSWER_ID_2,(String)  answer2.id);
+        values.put(ANSWER_ID_2, (String) answer2.id);
         values.put(ANSWER2, answer2.answer);
-        values.put(ANSWER_ID_3,(String)  answer3.id);
+        values.put(ANSWER_ID_3, (String) answer3.id);
         values.put(ANSWER3, answer3.answer);
-        values.put(CORRECT_ANSWER_ID,(String)  correctAnswer.id);
+        values.put(CORRECT_ANSWER_ID, (String) correctAnswer.id);
         values.put(CORRECT_ANSWER, correctAnswer.answer);
 
         getCurrentDB().insert(TableName, null, values);
@@ -72,10 +74,11 @@ public class QuestionHelper extends SQLiteOpenHelper {
             ItemQuestion question = new ItemQuestion();
             question.id = cursor.getInt(0);
             question.question = cursor.getString(1);
-            question.answer1 = new Answer(cursor.getString(2), cursor.getString(3));
-            question.answer2 = new Answer(cursor.getString(4), cursor.getString(5));
-            question.answer3 = new Answer(cursor.getString(6), cursor.getString(7));
-            question.correct = new Answer(cursor.getString(8), cursor.getString(9));
+            question.idTopic=cursor.getInt(2);
+            question.answer1 = new Answer(cursor.getString(3), cursor.getString(4));
+            question.answer2 = new Answer(cursor.getString(5), cursor.getString(6));
+            question.answer3 = new Answer(cursor.getString(7), cursor.getString(8));
+            question.correct = new Answer(cursor.getString(9), cursor.getString(10));
             questions.add(question);
         }
         return questions;
@@ -95,7 +98,9 @@ public class QuestionHelper extends SQLiteOpenHelper {
         String query = "CREATE TABLE  " + TableName
                 + " " + "("
                 + " " + ID_COL + " " + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+
                 + " " + NAME_QUESTION + " " + "NVARCHAR,"
+                + " " + ID_TOPIC + " " + "INTEGER,"
                 + " " + ANSWER_ID_1 + " " + "INTEGER,"
                 + " " + ANSWER1 + " " + "NVARCHAR,"
                 + " " + ANSWER_ID_2 + " " + "INTEGER,"
@@ -105,12 +110,31 @@ public class QuestionHelper extends SQLiteOpenHelper {
                 + " " + CORRECT_ANSWER_ID + " " + "INTEGER,"
                 + " " + CORRECT_ANSWER + " " + "NVARCHAR"
                 + " " + ")";
-
         sqLiteDatabase.execSQL(query);
+
+        String query2 = "CREATE TABLE  " + "Histories"
+                + " " + "("
+                + " " + ID_COL + " " + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + " " + "NAME" + " " + "NVARCHAR,"
+                + " " + "RESULT" + " " + "NVARCHAR,"
+                + " " + "TIME" + " " + "NVARCHAR"
+                + " " + ")";
+        sqLiteDatabase.execSQL(query2);
+
+        String query3 = "CREATE TABLE  " + "Topics"
+                + " " + "("
+                + " " + ID_COL + " " + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + " " + "NAME" + " " + "NVARCHAR"
+                + " " + ")";
+        sqLiteDatabase.execSQL(query3);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+//        String drop_students_table = "DROP TABLE IF EXISTS" + " " + TableName;
+//        sqLiteDatabase.execSQL(drop_students_table);
+//        String drop_students_table2 = "DROP TABLE IF EXISTS" + " " + "History";
+//        sqLiteDatabase.execSQL(drop_students_table2);
+//        onCreate(sqLiteDatabase);
     }
 }

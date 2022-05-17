@@ -10,4 +10,5 @@
     <item name="answer_content3" type="id" />
     <item name="tv_correct" type="id" />
     <item name="correct_answer" type="id" />
+    <item name="fragment_item_create_question" type="id" />
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.baochau.dmt.quickapp">
 
     <application
@@ -10,14 +11,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickApp">
         <activity
-            android:name=".Activity.StartExamActivity"
+            android:name=".Activity.ListQuestionsActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".Activity.HistoryExamActivity"
             android:exported="false" />
+        <activity
+            android:name=".Activity.TopicExamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.StartExamActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".Activity.CreateExamActivity"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
+        <!--        <activity-->
+        <!--            android:name=".MainActivity2"-->
+        <!--            android:exported="false" />-->
         <activity
             android:name=".slide.ScreenSlideExamActivity"
             android:exported="false"
@@ -28,6 +38,9 @@
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.QuickApp.NoActionBar">
+            <tools:validation testUrl="http://www.baochau_quick_app.com" />
+            <tools:validation testUrl="http://www.baochau_quick_app.com" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

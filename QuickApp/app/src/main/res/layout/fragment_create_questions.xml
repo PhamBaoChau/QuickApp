@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentView"
+    tools:context=".Activity.CreateExamActivity"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Câu 1:"
+        android:textSize="8pt"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        android:text="Mời bạn nhập câu hỏi:"
+        android:textSize="7pt"
+        android:textColor="@color/text_color"/>
+
+    <EditText
+        android:id="@+id/edtQuestion"
+        android:imeOptions="actionDone"
+        android:hint="Câu hỏi"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="7pt"/>
+
+    <TextView
+        android:id="@+id/tvA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtQuestion"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        android:layout_marginTop="20dp"
+        android:text="Mời bạn nhập đáp án A:"
+        android:textSize="7pt"
+        android:textColor="@color/text_color"/>
+
+    <EditText
+        android:id="@+id/edtA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đáp án A"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:textSize="7pt"
+        app:layout_constraintTop_toBottomOf="@+id/tvA"/>
+    <TextView
+        android:id="@+id/tvB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtA"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        android:layout_marginTop="20dp"
+        android:text="Mời bạn nhập đáp án B:"
+        android:textColor="@color/black"
+        android:textSize="7pt"/>
+    <EditText
+        android:id="@+id/edtB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đáp án B"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:textSize="7pt"
+        app:layout_constraintTop_toBottomOf="@+id/tvB"/>
+    <TextView
+        android:id="@+id/tvC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtB"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        android:layout_marginTop="20dp"
+        android:text="Mời bạn nhập đáp án C:"
+        android:textColor="@color/black"
+        android:textSize="7pt"/>
+    <EditText
+        android:id="@+id/edtC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Đáp án C"
+        android:textSize="7pt"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        app:layout_constraintTop_toBottomOf="@+id/tvC"/>
+
+        <TextView
+            android:id="@+id/tvCorrect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Chọn đáp án đúng"
+            app:layout_constraintTop_toBottomOf="@id/edtC"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/black"
+            android:textSize="7pt" />
+
+        <Spinner
+            android:id="@+id/spinnerCorrect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown"
+            app:layout_constraintTop_toBottomOf="@id/tvCorrect"/>
+
+</android.support.constraint.ConstraintLayout>

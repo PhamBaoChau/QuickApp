@@ -1,20 +1,29 @@
 package com.baochau.dmt.quickapp.Activity;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Activity;
+import android.app.Dialog;
+import android.content.Intent;
+import android.os.Process;
+import android.renderscript.Sampler;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import com.baochau.dmt.quickapp.FragmentDone;
+import com.baochau.dmt.quickapp.MainActivity;
+import com.baochau.dmt.quickapp.fragment.FragmentDone;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.questions.Answer;
-import com.baochau.dmt.quickapp.questions.ItemQuestion;
-import com.baochau.dmt.quickapp.slide.SlidePageFragment;
+import com.baochau.dmt.quickapp.OOP.Answer;
+import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.fragment.SlidePageFragment;
+import com.baochau.dmt.quickapp.slide.ExitGameDialogFragment;
 
 import java.util.ArrayList;
 
@@ -32,6 +41,8 @@ public class StartExamActivity extends AppCompatActivity {
 
     Button btnNext, btnConfirm, btnFinish;
     FrameLayout fragmentLayout;
+    FrameLayout fragmentDoneFrameLayout;
+    LinearLayout overView;
 
     QuestionHelper db = new QuestionHelper(this, null, null, 0);
     ArrayList<ItemQuestion> arrayList = new ArrayList<>();
@@ -41,6 +52,8 @@ public class StartExamActivity extends AppCompatActivity {
     int currentQuestion = 0;
 
     void init() {
+        overView = findViewById(R.id.overView);
+        fragmentDoneFrameLayout = findViewById(R.id.fragmentDone);
         fragmentLayout = findViewById(R.id.fragment);
         btnNext = findViewById(R.id.btn_next);
         btnConfirm = findViewById(R.id.btn_confirm);
@@ -53,7 +66,7 @@ public class StartExamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start_exam);
 
         init();
-        getQuestions();
+        getQuestions(getIntent().getIntExtra(TopicExamActivity.ID_TOPIC,DEFAULT_KEYS_SHORTCUT));
         replaceFragment();
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,10 +86,48 @@ public class StartExamActivity extends AppCompatActivity {
                 finishFunction();
             }
         });
+
     }
 
-    private void getQuestions() {
-        arrayList = db.getQuestions();
+    @Override
+    public void onBackPressed() {
+        createDialog();
+    }
+
+    public void createDialog() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_exit);
+
+        TextView message = dialog.findViewById(R.id.tvTitle);
+        Button btnCancel = dialog.findViewById(R.id.btnCancel);
+        Button btnExit = dialog.findViewById(R.id.btnExit);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        btnExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(StartExamActivity.this, MainActivity.class);
+                startActivity(intent);
+                finishAffinity();
+
+            }
+        });
+        dialog.show();
+    }
+
+    private void getQuestions(int id) {
+        for (ItemQuestion item: db.getQuestions()) {
+            if (item.idTopic==id)
+            {
+                arrayList.add(item);
+            }
+        }
     }
 
     private void confirmFunction() {
@@ -99,14 +150,18 @@ public class StartExamActivity extends AppCompatActivity {
     }
 
     private void finishFunction() {
+        overView.setVisibility(View.GONE);
+        fragmentDoneFrameLayout.setVisibility(View.VISIBLE);
+
         fragmentManager = getSupportFragmentManager().beginTransaction();
         FragmentDone fragmentDone = new FragmentDone();
-        fragmentManager.replace(fragmentLayout.getId(), fragmentDone);
+        fragmentManager.replace(fragmentDoneFrameLayout.getId(), fragmentDone);
         Bundle bundle = new Bundle();
         bundle.putSerializable(MY_ANSWER, listAnswer);
-        slidePageFragment.setArguments(bundle);
+        fragmentDone.setArguments(bundle);
         fragmentManager.addToBackStack(null);
         fragmentManager.commit();
+        btnFinish.setVisibility(View.GONE);
     }
 
     private void replaceFragment() {

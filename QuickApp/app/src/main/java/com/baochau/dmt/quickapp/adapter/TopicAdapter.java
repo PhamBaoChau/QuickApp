@@ -1,4 +1,4 @@
-package com.baochau.dmt.quickapp.exam;
+package com.baochau.dmt.quickapp.adapter;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -8,16 +8,17 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.baochau.dmt.quickapp.OOP.Topic;
 import com.baochau.dmt.quickapp.R;
 
 import java.util.ArrayList;
 
 public class TopicAdapter extends BaseAdapter {
-    AnswerFragment fm;
+    Context context;
     ArrayList<Topic>arrayList;
 
-    public TopicAdapter(AnswerFragment context, ArrayList<Topic> arrayList) {
-        this.fm = context;
+    public TopicAdapter(Context context, ArrayList<Topic> arrayList) {
+        this.context = context;
         this.arrayList = arrayList;
     }
 
@@ -38,10 +39,10 @@ public class TopicAdapter extends BaseAdapter {
 
     @Nullable
     public View getView(int position, View container, ViewGroup parent) {
-            LayoutInflater inflater=LayoutInflater.from(fm.getContext());
-            container=inflater.inflate(R.layout.item_exam,null);
-            TextView tvName=container.findViewById(R.id.tv_topic);
-            tvName.setText(arrayList.get(position).getName());
+            LayoutInflater inflater=LayoutInflater.from(context);
+            container=inflater.inflate(R.layout.item_topic,null);
+            TextView title=container.findViewById(R.id.tvTitle);
+            title.setText("Đề "+arrayList.get(position).id+": "+arrayList.get(position).name);
             return container;
     }
 }
