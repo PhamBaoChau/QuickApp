@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="14dp"
             android:textColor="@android:color/holo_red_dark"
             android:visibility="visible"/>
@@ -100,7 +100,7 @@
             android:text="User name"
             app:layout_constraintTop_toBottomOf="@id/tvError"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="12dp"
             android:textColor="@color/black"
             android:visibility="invisible"/>
@@ -111,7 +111,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvUserName"
             android:hint="User name"
             android:textColorHint="#475569"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="14dp"
             android:backgroundTint="#CBD5E1"
             android:paddingBottom="20dp"
@@ -125,7 +125,7 @@
             android:text="Password"
             app:layout_constraintTop_toBottomOf="@id/edtUserName"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="12dp"
             android:textColor="@color/black"
             android:visibility="invisible"/>
@@ -136,7 +136,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvPassword"
             android:hint="Password"
             android:textColorHint="#475569"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="14dp"
             android:backgroundTint="#CBD5E1"
             android:paddingBottom="20dp"
@@ -170,7 +170,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Or continue with"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="14dp"
             android:textColor="#8A8A8A"
             app:layout_constraintBottom_toTopOf="@id/btnGoogle"
@@ -187,7 +187,7 @@
             android:gravity="center"
             android:text="Google"
             android:textSize="14dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
             android:layout_marginBottom="10dp"/>
         <TextView
@@ -200,7 +200,7 @@
             android:gravity="center"
             android:text="Facebook"
             android:textSize="14dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/roboto_regular"
             android:textColor="@color/black"
             android:layout_marginBottom="10dp"/>
         <LinearLayout
@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:text="Don't have account?"
                 android:layout_marginRight="5dp"
-                android:fontFamily="@font/roboto"
+                android:fontFamily="@font/roboto_regular"
                 android:textSize="14dp"
                 android:textColor="#8A8A8A"/>
             <TextView

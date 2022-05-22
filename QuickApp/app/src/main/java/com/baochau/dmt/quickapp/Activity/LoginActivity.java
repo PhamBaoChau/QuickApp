@@ -46,18 +46,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnFocusChan
         setContentView(R.layout.activity_login);
         init();
 
-//        typeface=ResourcesCompat.getFont(this,R.font.roboto_medium);
+        typeface=ResourcesCompat.getFont(this,R.font.roboto_medium);
 
-//        accounts = accountHelper.getAccounts();
-//        edtUser.setOnFocusChangeListener(this);
-//        edtPass.setOnFocusChangeListener(this);
-//
-//        tvForgot.setOnTouchListener(this);
-//        tvSignUp.setOnTouchListener(this);
-//        tvLogin.setOnTouchListener(this);
-//
-//        edtUser.setOnEditorActionListener(this);
-//        edtPass.setOnEditorActionListener(this);
+        accounts = accountHelper.getAccounts();
+        edtUser.setOnFocusChangeListener(this);
+        edtPass.setOnFocusChangeListener(this);
+
+        tvForgot.setOnTouchListener(this);
+        tvSignUp.setOnTouchListener(this);
+        tvLogin.setOnTouchListener(this);
+
+        edtUser.setOnEditorActionListener(this);
+        edtPass.setOnEditorActionListener(this);
     }
     @Override
     public void onBackPressed() {
