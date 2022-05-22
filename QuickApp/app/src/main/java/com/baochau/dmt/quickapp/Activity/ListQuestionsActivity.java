@@ -4,13 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
-import com.baochau.dmt.quickapp.OOP.Topic;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.adapter.ShowQuestionAdapter;
-import com.baochau.dmt.quickapp.adapter.TopicAdapter;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.database.TopicHelper;
 
 import java.util.ArrayList;
 

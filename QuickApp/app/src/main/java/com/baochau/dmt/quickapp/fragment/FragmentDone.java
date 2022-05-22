@@ -20,8 +20,8 @@ import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.HistoryHelper;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.OOP.Answer;
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.model.Answer;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,30 +64,32 @@ public class FragmentDone extends Fragment {
         }
         tvScore.setText(score + " / " + listAnswer.size());
 
-        swtSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (swtSave.isChecked()) {
-                    edtName.setVisibility(View.VISIBLE);
-                } else {
-                    edtName.setVisibility(View.GONE);
-                }
+        swtSave.setOnClickListener(view1 -> {
+            if (swtSave.isChecked()) {
+                edtName.setVisibility(View.VISIBLE);
+            } else {
+                edtName.setVisibility(View.GONE);
             }
         });
 
 
-        btnDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm dd/MM/yy");
-                String time = simpleDateFormat.format(Calendar.getInstance().getTime());
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                if (swtSave.isChecked()) {
-                    dbHistory.addNewHistory(edtName.getText().toString().trim(), tvScore.getText().toString().trim(), time);
-
-                } else dbHistory.addNewHistory(null, tvScore.getText().toString().trim(), time);
-                startActivity(intent);
-            }
+        btnDone.setOnClickListener(view12 -> {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm dd/MM/yy");
+            String time = simpleDateFormat.format(Calendar.getInstance().getTime());
+            int idLogin = getArguments().getInt(MainActivity.ID_LOGIN);
+            Intent intent = new Intent(getContext(), MainActivity.class);
+            intent.putExtra(MainActivity.ID_LOGIN,idLogin);
+            System.out.println(idLogin);
+            if (swtSave.isChecked()) {
+                dbHistory.addNewHistory(idLogin,getText(edtName),tvScore.getText().toString().trim(),time);
+            } else
+                dbHistory.addNewHistory(idLogin, null, tvScore.getText().toString().trim(), time);
+            startActivity(intent);
+            getActivity().finishAffinity();
         });
+    }
+
+    String getText(EditText edtText) {
+        return edtText.getText().toString().trim();
     }
 }

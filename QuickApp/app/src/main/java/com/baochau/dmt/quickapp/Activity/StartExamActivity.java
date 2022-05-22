@@ -1,12 +1,8 @@
 package com.baochau.dmt.quickapp.Activity;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
-import android.os.Process;
-import android.renderscript.Sampler;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -20,10 +16,9 @@ import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.fragment.FragmentDone;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.OOP.Answer;
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.model.Answer;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 import com.baochau.dmt.quickapp.fragment.SlidePageFragment;
-import com.baochau.dmt.quickapp.slide.ExitGameDialogFragment;
 
 import java.util.ArrayList;
 
@@ -50,6 +45,7 @@ public class StartExamActivity extends AppCompatActivity {
     SlidePageFragment slidePageFragment;
 
     int currentQuestion = 0;
+    int idAccount;
 
     void init() {
         overView = findViewById(R.id.overView);
@@ -64,8 +60,9 @@ public class StartExamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_exam);
-
         init();
+        idAccount=getIntent().getIntExtra(MainActivity.ID_LOGIN,0);
+
         getQuestions(getIntent().getIntExtra(TopicExamActivity.ID_TOPIC,DEFAULT_KEYS_SHORTCUT));
         replaceFragment();
         btnConfirm.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +154,7 @@ public class StartExamActivity extends AppCompatActivity {
         FragmentDone fragmentDone = new FragmentDone();
         fragmentManager.replace(fragmentDoneFrameLayout.getId(), fragmentDone);
         Bundle bundle = new Bundle();
+        bundle.putInt(MainActivity.ID_LOGIN,idAccount);
         bundle.putSerializable(MY_ANSWER, listAnswer);
         fragmentDone.setArguments(bundle);
         fragmentManager.addToBackStack(null);

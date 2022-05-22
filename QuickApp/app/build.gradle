@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 28
 
     defaultConfig {
         applicationId "com.baochau.dmt.quickapp"
-        minSdk 23
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -28,8 +28,8 @@ android {
     buildFeatures {
         viewBinding true
     }
+    buildToolsVersion '30.0.3'
 }
-
 dependencies {
 
     implementation 'com.android.support:appcompat-v7:28.0.0'
@@ -44,3 +44,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+

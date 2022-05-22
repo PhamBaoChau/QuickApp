@@ -1,4 +1,4 @@
-package com.baochau.dmt.quickapp.OOP;
+package com.baochau.dmt.quickapp.model;
 
 import java.io.Serializable;
 

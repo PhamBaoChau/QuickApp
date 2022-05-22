@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.baochau.dmt.quickapp.OOP.ItemHistory;
+import com.baochau.dmt.quickapp.database.AccountHelper;
+import com.baochau.dmt.quickapp.model.Account;
+import com.baochau.dmt.quickapp.model.ItemHistory;
 import com.baochau.dmt.quickapp.R;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 public class HistoryAdapter extends BaseAdapter {
     Context context;
     ArrayList<ItemHistory> arr;
+    AccountHelper accountHelper;
 
     public HistoryAdapter(Context context, ArrayList<ItemHistory> arr) {
         this.context = context;
@@ -38,18 +41,27 @@ public class HistoryAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater layoutInflater=LayoutInflater.from(context);
-        view =layoutInflater.inflate(R.layout.item_history,null);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        view = layoutInflater.inflate(R.layout.item_history, null);
+        accountHelper = new AccountHelper(context, null, null, 0);
 
-        TextView id=view.findViewById(R.id.tvId);
-        TextView name=view.findViewById(R.id.tvName);
-        TextView result=view.findViewById(R.id.tvResult);
-        TextView timer=view.findViewById(R.id.tvTime);
+        TextView id = view.findViewById(R.id.tvId);
+        TextView name = view.findViewById(R.id.tvName);
+        TextView result = view.findViewById(R.id.tvResult);
+        TextView timer = view.findViewById(R.id.tvTime);
 
         id.setText(String.valueOf(arr.get(i).id));
-        name.setText(arr.get(i).name);
         result.setText(arr.get(i).result);
         timer.setText(arr.get(i).time);
+        name.setText(arr.get(i).name);
+        if (arr.get(i).idAccount > 0) {
+            if (arr.get(i).name == null) {
+                for (Account item : accountHelper.getAccounts()) {
+                    if (item.id == arr.get(i).idAccount)
+                        name.setText(item.name);
+                }
+            }
+        }
         return view;
     }
 }

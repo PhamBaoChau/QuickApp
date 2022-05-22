@@ -7,8 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
-import com.baochau.dmt.quickapp.OOP.Answer;
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.model.Answer;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 
 import java.util.ArrayList;
 
@@ -115,6 +115,7 @@ public class QuestionHelper extends SQLiteOpenHelper {
         String query2 = "CREATE TABLE  " + "Histories"
                 + " " + "("
                 + " " + ID_COL + " " + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + " " + "ID_ACCOUNT" + " " + "INTEGER,"
                 + " " + "NAME" + " " + "NVARCHAR,"
                 + " " + "RESULT" + " " + "NVARCHAR,"
                 + " " + "TIME" + " " + "NVARCHAR"
@@ -127,6 +128,15 @@ public class QuestionHelper extends SQLiteOpenHelper {
                 + " " + "NAME" + " " + "NVARCHAR"
                 + " " + ")";
         sqLiteDatabase.execSQL(query3);
+
+        String query4 = "CREATE TABLE  " + "Accounts"
+                + " " + "("
+                + " " + ID_COL + " " + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + " " + "NAME" + " " + "NVARCHAR,"
+                + " " + "EMAIL" + " " + "NVARCHAR,"
+                + " " + "PASSWORD" + " " + "NVARCHAR"
+                + " " + ")";
+        sqLiteDatabase.execSQL(query4);
     }
 
     @Override

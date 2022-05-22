@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 import com.baochau.dmt.quickapp.R;
 
 import java.util.ArrayList;

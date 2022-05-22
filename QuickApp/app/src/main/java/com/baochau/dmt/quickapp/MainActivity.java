@@ -16,19 +16,23 @@ import android.widget.TextView;
 
 import com.baochau.dmt.quickapp.Activity.CreateExamActivity;
 import com.baochau.dmt.quickapp.Activity.HistoryExamActivity;
+import com.baochau.dmt.quickapp.Activity.LoginActivity;
 import com.baochau.dmt.quickapp.Activity.StartExamActivity;
 import com.baochau.dmt.quickapp.Activity.TopicExamActivity;
 import com.baochau.dmt.quickapp.slide.ExitGameDialogFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String STATE_TOPIC = "state_topic";
-    Button btnCreate, btnJoin, btnHistory, btnListQuestions, btnExit;
+    public static final String ID_LOGIN = "id_login";
+    Button btnCreate, btnJoin, btnHistory, btnListQuestions, btnLogin, btnLogOut, btnExit;
 
     private void init() {
         btnCreate = findViewById(R.id.btnCreateExam);
         btnJoin = findViewById(R.id.btnJoin);
         btnHistory = findViewById(R.id.btnViewHistory);
         btnListQuestions = findViewById(R.id.btnViewQuestions);
+        btnLogin = findViewById(R.id.btnLogin);
+        btnLogOut = findViewById(R.id.btnLogout);
         btnExit = findViewById(R.id.btnExit);
     }
 
@@ -37,15 +41,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-
-
+        if (getIntent().getIntExtra(ID_LOGIN, 0) > 0) {
+            btnLogin.setVisibility(View.GONE);
+            btnLogOut.setVisibility(View.VISIBLE);
+        }
         btnCreate.setOnClickListener(this);
         btnJoin.setOnClickListener(this);
         btnHistory.setOnClickListener(this);
         btnListQuestions.setOnClickListener(this);
+        btnLogin.setOnClickListener(this);
+        btnLogOut.setOnClickListener(this);
         btnExit.setOnClickListener(this);
     }
-    
+
     @Override
     public void onClick(View view) {
         if (view.getId() == btnCreate.getId()) {
@@ -55,10 +63,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view.getId() == btnJoin.getId()) {
             Intent intent = new Intent(this, TopicExamActivity.class);
             intent.putExtra(STATE_TOPIC, "start");
+            intent.putExtra(ID_LOGIN, getIntent().getIntExtra(ID_LOGIN, 0));
             startActivity(intent);
         }
         if (view.getId() == btnHistory.getId()) {
             Intent intent = new Intent(this, HistoryExamActivity.class);
+            intent.putExtra(ID_LOGIN, getIntent().getIntExtra(ID_LOGIN, 0));
             startActivity(intent);
         }
         if (view.getId() == btnListQuestions.getId()) {
@@ -66,12 +76,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra(STATE_TOPIC, "show");
             startActivity(intent);
         }
+        if (view.getId() == btnLogin.getId()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra(ID_LOGIN, getIntent().getIntExtra(ID_LOGIN, 0));
+            startActivity(intent);
+        }
+        if (view.getId() == btnLogOut.getId()) {
+            createDialog(btnLogOut);
+        }
         if (view.getId() == btnExit.getId()) {
-            createDialog();
+            createDialog(btnExit);
         }
     }
 
-    public void createDialog() {
+    public void createDialog(Button btnButton) {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_exit);
@@ -80,6 +98,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Button btnCancel = dialog.findViewById(R.id.btnCancel);
         Button btnExit = dialog.findViewById(R.id.btnExit);
 
+        if (btnButton.getId() == btnLogOut.getId()){
+            message.setText("Bạn chắc chắn muốn đăng xuất?");
+            btnExit.setText("Log out");
+        }
+        if (btnButton.getId()==btnExit.getId()){
+            message.setText("Bạn chắc chắn muốn thoát?");
+        }
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,39 +114,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finishAndRemoveTask();
+                if (btnButton.getId() == btnExit.getId()){
+                    System.out.println("hhhhhhh");
+                    finishAffinity();
+                }
+                if (btnButton.getId()==btnLogOut.getId()){
+                    Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                    intent.putExtra(ID_LOGIN, 0);
+                    startActivity(intent);
+                }
             }
         });
         dialog.show();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        System.out.println("stop");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        System.out.println("pause");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        System.out.println("resume");
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        System.out.println("start");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        System.out.println("destroy");
     }
 }

@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.Nullable;
 
-import com.baochau.dmt.quickapp.OOP.Topic;
+import com.baochau.dmt.quickapp.model.Topic;
 
 import java.util.ArrayList;
 

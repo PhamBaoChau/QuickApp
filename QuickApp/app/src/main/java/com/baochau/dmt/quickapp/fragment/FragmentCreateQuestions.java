@@ -19,7 +19,7 @@ import android.widget.Spinner;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.adapter.CustomSpnAdapter;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.OOP.Answer;
+import com.baochau.dmt.quickapp.model.Answer;
 import com.baochau.dmt.quickapp.database.TopicHelper;
 
 import java.util.ArrayList;

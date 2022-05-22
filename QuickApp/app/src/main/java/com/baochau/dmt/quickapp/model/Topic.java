@@ -1,6 +1,4 @@
-package com.baochau.dmt.quickapp.OOP;
-
-import java.util.ArrayList;
+package com.baochau.dmt.quickapp.model;
 
 public class Topic {
     public int id;

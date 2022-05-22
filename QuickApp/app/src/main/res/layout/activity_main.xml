@@ -14,7 +14,7 @@
         android:layout_marginBottom="200dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="5">
+        android:weightSum="6">
         <Button
             android:id="@+id/btnCreateExam"
             android:text="Create Exam"
@@ -46,12 +46,28 @@
             android:layout_height="0dp"
             android:layout_weight="1"/>
         <Button
+        android:id="@+id/btnLogin"
+        android:text="Log in"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnLogout"
+            android:text="Log out"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:visibility="gone"/>
+        <Button
             android:id="@+id/btnExit"
             android:text="Exit"
             android:textSize="20dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"/>
+
     </LinearLayout>
 
 </LinearLayout>

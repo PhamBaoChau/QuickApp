@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.OOP.Answer;
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.model.Answer;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 
 import java.util.ArrayList;
 

@@ -6,7 +6,7 @@ import android.widget.Button;
 
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
-import com.baochau.dmt.quickapp.OOP.ItemQuestion;
+import com.baochau.dmt.quickapp.model.ItemQuestion;
 
 import java.util.ArrayList;
 
