@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.baochau.dmt.quickapp.model.Topic;
@@ -17,7 +18,22 @@ public class TopicHelper extends QuestionHelper{
     public TopicHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, @Nullable int version) {
         super(context, DB_NAME, factory, DB_version);
     }
-    public void addATopic(String name){
+
+    public void editTopic(@NonNull int id,@NonNull String name){
+        ContentValues contentValues=new ContentValues();
+        contentValues.put(NAME,name);
+        String query=ID_TOPIC+"=?";
+        getCurrentDB().update(TABLE_NAME,contentValues,query,new String[]{String.valueOf(id)});
+        getCurrentDB().close();
+    }
+
+    public void deleteTopic(@NonNull int idTopic) {
+        String query=ID_TOPIC+"=?";
+        getCurrentDB().delete(TABLE_NAME,query,new String[]{String.valueOf(idTopic)});
+        getCurrentDB().close();
+    }
+
+    public void addATopic(@NonNull String name){
         ContentValues contentValues=new ContentValues();
         contentValues.put(NAME,name);
         getCurrentDB().insert(TABLE_NAME,null,contentValues);

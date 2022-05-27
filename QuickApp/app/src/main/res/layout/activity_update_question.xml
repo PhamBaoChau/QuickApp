@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentView"
+    tools:context=".Activity.UpdateQuestionActivity"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Câu hỏi:"
+        android:textSize="18dp"
+        android:textColor="@color/text_color"/>
+
+    <EditText
+        android:id="@+id/edtQuestion"
+        android:imeOptions="actionDone"
+        android:hint="Câu hỏi"
+        app:layout_constraintTop_toBottomOf="@+id/tvQuestion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnEditQuestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:textSize="16dp"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/btnEditQuestion"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_action_edit"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtQuestion"
+        app:layout_constraintTop_toTopOf="@id/edtQuestion"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:id="@+id/tvA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtQuestion"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="Đáp án A:"
+        android:textSize="18dp"
+        android:textColor="@color/text_color"/>
+
+    <EditText
+        android:id="@+id/edtA"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Đáp án A"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:textSize="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvA"
+        app:layout_constraintEnd_toStartOf="@id/btnEditA"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="false"/>
+    <Button
+        android:id="@+id/btnEditA"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_action_edit"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtA"
+        app:layout_constraintTop_toTopOf="@id/edtA"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtA"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="Đáp án B:"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+    <EditText
+        android:id="@+id/edtB"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Đáp án B"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        android:textSize="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvB"
+        app:layout_constraintEnd_toStartOf="@id/btnEditB"
+        app:layout_constraintStart_toStartOf="parent"
+        android:focusable="false"/>
+    <Button
+        android:id="@+id/btnEditB"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_action_edit"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtB"
+        app:layout_constraintTop_toTopOf="@id/edtB"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtB"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:text="Đáp án C:"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+    <EditText
+        android:id="@+id/edtC"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Đáp án C"
+        android:textSize="16dp"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
+        app:layout_constraintTop_toBottomOf="@+id/tvC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnEditC"
+        android:focusable="false"/>
+    <Button
+        android:id="@+id/btnEditC"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_action_edit"
+        android:backgroundTint="@color/purple_700"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edtC"
+        app:layout_constraintTop_toTopOf="@id/edtC"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:id="@+id/tvCorrect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtC"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="Đáp án đúng:"
+        android:textColor="@color/black"
+        android:textSize="18dp"/>
+    <Spinner
+        android:id="@+id/spnCorrect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvCorrect"
+        android:focusable="false"/>
+
+        <Button
+            android:id="@+id/btnSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_action_dropup"
+            android:background="@color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCorrect"
+
+            android:paddingBottom="10dp"/>
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Update"
+        android:background="@drawable/radius_button_purple"/>
+</android.support.constraint.ConstraintLayout>

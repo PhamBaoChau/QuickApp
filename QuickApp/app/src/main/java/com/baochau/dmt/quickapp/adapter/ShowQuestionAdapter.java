@@ -48,7 +48,7 @@ public class ShowQuestionAdapter extends BaseAdapter {
         TextView tvC=view.findViewById(R.id.tvC);
         TextView tvCorrect=view.findViewById(R.id.tvCorrect);
 
-        lbQuestion.setText("Câu "+arrayList.get(i).id+": ");
+        lbQuestion.setText("Câu "+(i+1)+": ");
         tvQuestion.setText(arrayList.get(i).question);
         tvA.setText(arrayList.get(i).answer1.answer);
         tvB.setText(arrayList.get(i).answer2.answer);

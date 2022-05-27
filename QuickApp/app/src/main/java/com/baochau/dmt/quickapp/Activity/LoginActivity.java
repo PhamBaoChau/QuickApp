@@ -59,10 +59,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnFocusChan
         edtUser.setOnEditorActionListener(this);
         edtPass.setOnEditorActionListener(this);
     }
-    @Override
-    public void onBackPressed() {
-        finishAffinity();
-    }
 
     @Override
     public void onFocusChange(View view, boolean b) {

@@ -5,9 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ListQuestionsActivity"
-    android:padding="20dp">
+    android:id="@+id/ltListQuestion">
+    <Button
+        android:id="@+id/btnAddQuestion"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/ic_action_add"
+        android:backgroundTint="@color/purple_500" />
     <ListView
         android:id="@+id/lvQuestion"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:divider="@color/transparent"
+        app:layout_constraintTop_toBottomOf="@id/btnAddQuestion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </android.support.constraint.ConstraintLayout>

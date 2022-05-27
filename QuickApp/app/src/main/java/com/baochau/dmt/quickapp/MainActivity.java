@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dialog.setContentView(R.layout.dialog_exit);
 
         TextView message = dialog.findViewById(R.id.tvTitle);
-        Button btnCancel = dialog.findViewById(R.id.btnCancel);
-        Button btnExit = dialog.findViewById(R.id.btnExit);
+        Button btnNo = dialog.findViewById(R.id.btnCancel);
+        Button btnYes = dialog.findViewById(R.id.btnExit);
 
         if (btnButton.getId() == btnLogOut.getId()){
             message.setText("Bạn chắc chắn muốn đăng xuất?");
@@ -105,17 +105,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (btnButton.getId()==btnExit.getId()){
             message.setText("Bạn chắc chắn muốn thoát?");
         }
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.cancel();
             }
         });
-        btnExit.setOnClickListener(new View.OnClickListener() {
+        btnYes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (btnButton.getId() == btnExit.getId()){
-                    System.out.println("hhhhhhh");
                     finishAffinity();
                 }
                 if (btnButton.getId()==btnLogOut.getId()){
