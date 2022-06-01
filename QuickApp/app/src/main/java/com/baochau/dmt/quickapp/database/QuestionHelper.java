@@ -42,9 +42,14 @@ public class QuestionHelper extends SQLiteOpenHelper {
 //            addQuestion(item.question, item.answer1,item.answer2,item.answer3,item.correct);
 //        }
 //    }
-    public void updateQuestion(@NonNull int idQuestion, @NonNull int idTopic, @NonNull String nameCol, @NonNull String text) {
+    public void updateQuestion(@NonNull int idQuestion, @NonNull int idTopic,@NonNull String question, @NonNull String answerA, @NonNull String answerB,@NonNull String answerC,@NonNull String idCorrect,@NonNull String correct) {
         ContentValues values = new ContentValues();
-        values.put(nameCol, text);
+        values.put(NAME_QUESTION,question);
+        values.put(ANSWER1, answerA);
+        values.put(ANSWER2, answerB);
+        values.put(ANSWER3, answerC);
+        values.put(CORRECT_ANSWER_ID,idCorrect);
+        values.put(CORRECT_ANSWER,correct);
         String query = "(" + ID_COL + "=?) AND (" + ID_TOPIC + "=?)";
         getCurrentDB().update(TableName, values, query,new String[]{String.valueOf(idQuestion), String.valueOf(idTopic)});
     }

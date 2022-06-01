@@ -14,12 +14,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.baochau.dmt.quickapp.Activity.StartExamActivity;
+import com.baochau.dmt.quickapp.BaseFragment;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.model.Answer;
 import com.baochau.dmt.quickapp.model.ItemQuestion;
 
 
-public class SlidePageFragment extends Fragment {
+public class SlidePageFragment extends BaseFragment {
 
     TextView title;
     TextView question;

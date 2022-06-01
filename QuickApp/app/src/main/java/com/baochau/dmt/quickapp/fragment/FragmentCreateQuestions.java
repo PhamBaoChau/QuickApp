@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Spinner;
 
+import com.baochau.dmt.quickapp.BaseFragment;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.adapter.CustomSpnAdapter;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
@@ -24,7 +25,7 @@ import com.baochau.dmt.quickapp.database.TopicHelper;
 
 import java.util.ArrayList;
 
-public class FragmentCreateQuestions extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class FragmentCreateQuestions extends BaseFragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     Spinner spnCorrect;
     ConstraintLayout parentView;
     public FrameLayout fragment;
@@ -32,7 +33,7 @@ public class FragmentCreateQuestions extends Fragment implements View.OnClickLis
     FragmentTransaction fragmentManager;
     ArrayAdapter spinnerAdapter;
 
-    Answer answerA, answerB, answerC, ansCorrect;
+    Answer ansCorrect;
     ArrayList<Answer> answers;
     ArrayList<String> dataSpinner = new ArrayList<>();
     QuestionHelper db = new QuestionHelper(getContext(), null, null, 0);

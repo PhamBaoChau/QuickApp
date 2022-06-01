@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.AccountHelper;
@@ -21,7 +22,7 @@ import com.baochau.dmt.quickapp.model.Account;
 
 import java.util.ArrayList;
 
-public class LoginActivity extends AppCompatActivity implements View.OnFocusChangeListener, View.OnTouchListener, TextView.OnEditorActionListener {
+public class LoginActivity extends BaseActivity implements View.OnFocusChangeListener, View.OnTouchListener, TextView.OnEditorActionListener {
     TextView tvUser, tvPass, tvError;
     TextView tvLogin, tvSignUp, tvForgot;
     EditText edtUser, edtPass;

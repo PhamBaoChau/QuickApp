@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ListView;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.model.ItemHistory;
 import com.baochau.dmt.quickapp.R;
@@ -12,7 +13,7 @@ import com.baochau.dmt.quickapp.database.HistoryHelper;
 
 import java.util.ArrayList;
 
-public class HistoryExamActivity extends AppCompatActivity {
+public class HistoryExamActivity extends BaseActivity {
 
     ListView lvHistory;
     HistoryAdapter adapter;

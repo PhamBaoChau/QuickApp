@@ -13,4 +13,12 @@ public class Answer implements Serializable {
         this.id = id;
         this.answer = answer;
     }
+
+    @Override
+    public String toString() {
+        return "Answer{" +
+                "id='" + id + '\'' +
+                ", answer='" + answer + '\'' +
+                '}';
+    }
 }

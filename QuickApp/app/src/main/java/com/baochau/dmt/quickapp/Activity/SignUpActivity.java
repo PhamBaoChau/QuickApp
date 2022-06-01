@@ -10,11 +10,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.AccountHelper;
 
-public class SignUpActivity extends AppCompatActivity implements TextView.OnEditorActionListener {
+public class SignUpActivity extends BaseActivity implements TextView.OnEditorActionListener {
 
     EditText edtFullName, edtEmail, edtPass, edtConfirmPass;
     TextView btnSignUp, errConfirm,errNotFull;

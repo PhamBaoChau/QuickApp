@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.model.Topic;
 import com.baochau.dmt.quickapp.R;
@@ -16,23 +17,22 @@ import com.baochau.dmt.quickapp.database.TopicHelper;
 
 import java.util.ArrayList;
 
-public class TopicExamActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener{
-    static final String ID_TOPIC="id_topic";
-    Button btnDeleteTopic,btnUpdateTopic;
+public class TopicExamActivity extends BaseActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
+    static final String ID_TOPIC = "id_topic";
+    Button btnDeleteTopic, btnUpdateTopic;
     ListView lvTopic;
     ArrayList<Topic> topics;
     TopicAdapter adapter;
-    StartExamActivity startExamActivity;
-    TopicHelper topicHelper=new TopicHelper(this,null,null,0);
+    TopicHelper topicHelper = new TopicHelper(this, null, null, 0);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R .layout.activity_topic_exam);
-        lvTopic=findViewById(R.id.lvTopic);
+        setContentView(R.layout.activity_topic_exam);
+        lvTopic = findViewById(R.id.lvTopic);
 
-        topics=topicHelper.getTopics();
-        adapter=new TopicAdapter(this,topics);
+        topics = topicHelper.getTopics();
+        adapter = new TopicAdapter(this, topics);
         lvTopic.setAdapter(adapter);
 
         lvTopic.setOnItemClickListener(this);
@@ -41,18 +41,17 @@ public class TopicExamActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Topic topic= (Topic) lvTopic.getItemAtPosition(i);
-        int idAccount=getIntent().getIntExtra(MainActivity.ID_LOGIN,0);
-        String state=getIntent().getStringExtra(MainActivity.STATE_TOPIC);
-        if (state.equals("start")){
-            Intent intent=new Intent(TopicExamActivity.this,StartExamActivity.class);
-            intent.putExtra(MainActivity.ID_LOGIN,idAccount);
+        Topic topic = (Topic) lvTopic.getItemAtPosition(i);
+        int idAccount = getIntent().getIntExtra(MainActivity.ID_LOGIN, 0);
+        String state = getIntent().getStringExtra(MainActivity.STATE_TOPIC);
+        if (state.equals("start")) {
+            Intent intent = new Intent(TopicExamActivity.this, StartExamActivity.class);
+            intent.putExtra(MainActivity.ID_LOGIN, idAccount);
             intent.putExtra(ID_TOPIC, topic.id);
             startActivity(intent);
         }
-        if (state.equals("show"))
-        {
-            Intent intent=new Intent(TopicExamActivity.this,ListQuestionsActivity.class);
+        if (state.equals("show")) {
+            Intent intent = new Intent(TopicExamActivity.this, ListQuestionsActivity.class);
             intent.putExtra(ID_TOPIC, topic.id);
             startActivity(intent);
         }
@@ -60,7 +59,7 @@ public class TopicExamActivity extends AppCompatActivity implements AdapterView.
 
     @Override
     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-        btnDeleteTopic=view.findViewById(R.id.btnDelete);
+        btnDeleteTopic = view.findViewById(R.id.btnDelete);
         btnDeleteTopic.setVisibility(View.VISIBLE);
         btnDeleteTopic.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -15,6 +15,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.baochau.dmt.quickapp.Activity.StartExamActivity;
+import com.baochau.dmt.quickapp.BaseActivity;
+import com.baochau.dmt.quickapp.BaseFragment;
 import com.baochau.dmt.quickapp.adapter.ListAnswerAdapter;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.R;
@@ -27,7 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class FragmentDone extends Fragment {
+public class FragmentDone extends BaseFragment {
     ArrayList<Answer> listAnswer;
     ArrayList<ItemQuestion> questions;
     QuestionHelper db;

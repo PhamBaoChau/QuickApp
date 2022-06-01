@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.adapter.CustomSpnAdapter;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
@@ -21,7 +22,7 @@ import com.baochau.dmt.quickapp.model.Answer;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class AddQuestionActivity extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener {
+public class AddQuestionActivity extends BaseActivity implements TextView.OnEditorActionListener, View.OnClickListener {
     EditText edtQuestion, edtA, edtB, edtC;
     Spinner spinner;
     Button btnAdd;

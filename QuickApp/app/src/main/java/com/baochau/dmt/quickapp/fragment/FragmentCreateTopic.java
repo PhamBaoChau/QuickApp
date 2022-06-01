@@ -10,13 +10,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.baochau.dmt.quickapp.BaseFragment;
 import com.baochau.dmt.quickapp.model.Topic;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.TopicHelper;
 
 import java.util.ArrayList;
 
-public class FragmentCreateTopic extends Fragment {
+public class FragmentCreateTopic extends BaseFragment {
     EditText edtTopic, edtNumQuestion;
     Button btnNext;
     Topic topic;

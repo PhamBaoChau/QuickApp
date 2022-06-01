@@ -12,6 +12,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.fragment.FragmentDone;
 import com.baochau.dmt.quickapp.R;
@@ -22,7 +23,7 @@ import com.baochau.dmt.quickapp.fragment.SlidePageFragment;
 
 import java.util.ArrayList;
 
-public class StartExamActivity extends AppCompatActivity {
+public class StartExamActivity extends BaseActivity {
 
     public final static String ITEM_QUESTION = "ITEM_QUESTION";
     public final static String MY_ANSWER = "MY_ANSWER";

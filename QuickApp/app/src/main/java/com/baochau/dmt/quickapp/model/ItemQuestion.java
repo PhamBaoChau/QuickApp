@@ -11,6 +11,7 @@ public class ItemQuestion implements Serializable {
     public Answer answer3;
     public Answer correct;
 
+    public Boolean isShowingDeleteBtn = false;
     public ItemQuestion() {
     }
 
@@ -24,5 +25,18 @@ public class ItemQuestion implements Serializable {
         this.correct = correct;
     }
 
+    @Override
+    public String toString() {
+        return "ItemQuestion{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                ", idTopic=" + idTopic +
+                ", answer1=" + answer1 +
+                ", answer2=" + answer2 +
+                ", answer3=" + answer3 +
+                ", correct=" + correct +
+                ", isShowingDeleteBtn=" + isShowingDeleteBtn +
+                '}';
+    }
 }
 

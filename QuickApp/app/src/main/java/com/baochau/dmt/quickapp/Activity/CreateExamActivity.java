@@ -9,13 +9,14 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.baochau.dmt.quickapp.BaseActivity;
 import com.baochau.dmt.quickapp.MainActivity;
 import com.baochau.dmt.quickapp.R;
 import com.baochau.dmt.quickapp.database.QuestionHelper;
 import com.baochau.dmt.quickapp.fragment.FragmentCreateQuestions;
 import com.baochau.dmt.quickapp.fragment.FragmentCreateTopic;
 
-public class CreateExamActivity extends AppCompatActivity implements View.OnClickListener {
+public class CreateExamActivity extends BaseActivity implements View.OnClickListener {
     public static FrameLayout fragment;
     Button btnNext;
     FragmentTransaction fragmentManager;
